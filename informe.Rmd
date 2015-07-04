@@ -72,7 +72,8 @@ $t_{`r (nrow(data)-2)`}(\frac{\alpha}{2})= `r qt(0.975 , df =nrow(data)-2)`$
 $H_0: \beta_2=0$.
 
 ###Intervalo de Confianza para $\beta_2$
-El intervalo de confianza para $\beta_2$, es $$`r int=confint(reg,level = 0.95);int[2,1]`\leq \beta_2 \leq `r int[2,2]` $$
+
+El intervalo de confianza para $\beta_2$, es: $$`r int=confint(reg,level = 0.95);int[2,1]`\leq \beta_2 \leq `r int[2,2]` $$
 
 
 ### Análisis de varianza
