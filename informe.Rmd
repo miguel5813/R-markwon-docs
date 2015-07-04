@@ -59,15 +59,20 @@ $$\hat{`r substring(names(data)[1],1,2)`} = `r reg$coefficients[1]` + `r reg$coe
 
 ### Interpretación
 __Interpretación modelo:__ _Si `r names(data)[2]` se incrementa en una unidad, entonces `r names(data)[1]`
-`r tex <-"aumenta"; if(reg$coefficients[2]<0) (tex<-"disminuye");tex` en promedio `r reg$coefficients[2]`
+`r tex <-"aumenta"; if(reg$coefficients[2]<0) (tex<-"disminuye");tex` en promedio `r abs(reg$coefficients[2])`
 unidades._
 
 __Interpretación $R^2$:__ _El modelo de regresión lineal obtenido explica el `r paste(100*summary(reg)$r.squared,"%")` de la variabilidad total._
 
 ### Pruebas de hipótesis
 
-__Ejercicio lector__
+Como $t= `r summary(reg)$coefficients[2,3]`$ es `r tex<-"menor"; if(summary(reg)$coefficients[2,3]>qt(0.975 , df =nrow(data)-2)) tex<-"mayor"; tex` que 
+$t_{`r (nrow(data)-2)`}(\frac{\alpha}{2})= `r qt(0.975 , df =nrow(data)-2)`$
+`r tex<-"rechazo"; if(summary(reg)$coefficients[1,3]>qt(0.975 , df =nrow(data)-2)) tex<-"no rechazo"; tex`
+$H_0: \beta_2=0$.
 
+###Intervalo de Confianza para $\beta_2$
+El intervalo de confianza para $\beta_2$, es $$`r int=confint(reg,level = 0.95);int[2,1]`\leq \beta_2 \leq `r int[2,2]` $$
 
 
 ### Análisis de varianza
